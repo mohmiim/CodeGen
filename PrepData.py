@@ -23,7 +23,20 @@ def split(data, data_set):
         elif length < MIN_LENGTH :
             accumilator = s;
         else:
-            break
+            start = 0
+            end = MAX_LENGTH
+            while True :
+                chunk = s [start:end]
+                data_set.write(chunk + "\n")
+                start = end
+                if end + MAX_LENGTH < length :
+                    end = end + MAX_LENGTH
+                else:
+                    if (len(s[end:length])>MIN_LENGTH) :
+                        data_set.write(s[end:length] + "\n")
+                    break
+            accumilator = ""
+                
     
 
 def prepDataForExt(folder,ext):
